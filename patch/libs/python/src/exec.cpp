@@ -72,6 +72,7 @@ object BOOST_PYTHON_DECL exec_statement(str string, object global, object local)
 // global and local are the global and local scopes respectively,
 // used during execution.
 //
+/*
 object BOOST_PYTHON_DECL exec_file(str filename, object global, object local)
 {
   // Set suitable default values for global and local dicts.
@@ -105,6 +106,7 @@ object BOOST_PYTHON_DECL exec_file(str filename, object global, object local)
   if (!result) throw_error_already_set();
   return object(detail::new_reference(result));
 }
+*/
 
 }  // namespace boost::python
 }  // namespace boost
