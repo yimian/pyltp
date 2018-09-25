@@ -113,6 +113,7 @@ elif sys.platform == 'darwin':
                            '-Wno-unused-variable',
                            '-Wno-reorder',
                            '-Wno-sign-compare',
+                           '-Wno-invalid-partial-specialization',
                            '-stdlib=libc++']
 else:
     extra_compile_args += ['-std=c++0x']

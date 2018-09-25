@@ -71,6 +71,7 @@ object BOOST_PYTHON_DECL exec_statement(str string, object global, object local)
 // Execute python source code from file filename.
 // global and local are the global and local scopes respectively,
 // used during execution.
+//
 object BOOST_PYTHON_DECL exec_file(str filename, object global, object local)
 {
   // Set suitable default values for global and local dicts.
@@ -85,9 +86,9 @@ object BOOST_PYTHON_DECL exec_file(str filename, object global, object local)
   // should be 'char const *' but older python versions don't use 'const' yet.
   char *f = python::extract<char *>(filename);
   // Let python open the file to avoid potential binary incompatibilities.
-#if PY_VERSION_HEX >= 0x03040000
+#if PY_VERSION_HEX >= 0x03040000 && !defined(PYPY_VERSION)
   FILE *fs = _Py_fopen(f, "r");
-#elif PY_VERSION_HEX >= 0x03000000
+#elif PY_VERSION_HEX >= 0x03000000 && !defined(PYPY_VERSION)
   PyObject *fo = Py_BuildValue("s", f);
   FILE *fs = _Py_fopen(fo, "r");
   Py_DECREF(fo);
