@@ -20,8 +20,8 @@ def parallelCCompile(self, sources, output_dir=None, macros=None, include_dirs=N
     # convert to list, imap is evaluated on-demand
     list(multiprocessing.pool.ThreadPool(N).imap(_single_compile,objects))
     return objects
-import distutils.ccompiler
-distutils.ccompiler.CCompiler.compile=parallelCCompile
+#import distutils.ccompiler
+#distutils.ccompiler.CCompiler.compile=parallelCCompile
 
 
 ltp_root="ltp"
